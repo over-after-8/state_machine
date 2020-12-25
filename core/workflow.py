@@ -13,6 +13,8 @@ class Workflow:
         result = None
         while True:
             transitions = self.wf_config.get_transitions(self.current_state)
+            if not transitions:
+                raise TypeError("transition must be a non empty list or not None")
             for transition in transitions:
                 if transition.is_satisfy(context):
                     self.current_state = transition.next_state

@@ -32,3 +32,13 @@ class TestActivityContext(TestCase):
         context.update(u_params)
         self.assertEqual(1, context.get_params("b"))
         self.assertEqual(2, context.get_params("a"))
+
+    def test_get_from_cache(self):
+        context = ActivityContext()
+        context.caching["A"] = "B"
+        self.assertEqual(context.get_from_cache("A"), "B")
+
+    def test_set_cache(self):
+        context = ActivityContext()
+        context.set_cache("A", "B")
+        self.assertEqual(context.caching["A"], "B")

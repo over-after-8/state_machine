@@ -12,7 +12,7 @@ class BaseWF:
         self.config = None
 
     def create_config(self):
-        pass
+        raise NotImplementedError
 
     def create_context(self, context):
         """
@@ -23,6 +23,11 @@ class BaseWF:
         self.context = ActivityContext(context)
 
     def run(self, context):
+        """
+
+        :param context: dict
+        :return:
+        """
         self.create_context(context=context)
         self.create_config()
         wf_config = WorkflowConfig()

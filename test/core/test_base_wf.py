@@ -4,7 +4,9 @@ from core.base_wf import BaseWF
 
 class TestBaseWF(TestCase):
     def test_create_config(self):
-        self.assertTrue(1 == 1)
+        wf = BaseWF()
+        with self.assertRaises(NotImplementedError):
+            wf.create_config()
 
     def test_create_context(self):
         wf = BaseWF()
@@ -15,4 +17,9 @@ class TestBaseWF(TestCase):
         self.assertEqual(1, wf.context.get_params("a"))
 
     def test_run(self):
-        self.assertTrue(1 == 1)
+        wf = BaseWF()
+        context = {
+            "a": 1
+        }
+        with self.assertRaises(NotImplementedError):
+            wf.run(context)
