@@ -17,7 +17,7 @@ class Workflow:
                 raise TypeError("transition must be a non empty list or not None")
             for transition in transitions:
                 if transition.is_satisfy(context):
-                    self.current_state = transition.next_state
+                    self.current_state = transition.next_state()
                     if self.current_state == State(FINAL):
                         logging.info(FINAL)
                         return result
@@ -26,5 +26,5 @@ class Workflow:
                         result = next_state.execute(context)
                     except Exception as e:
                         logging.error(e)
-                        break
+                        raise e
                     break

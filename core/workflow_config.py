@@ -1,4 +1,5 @@
 from core.transition import Transition
+import logging
 
 
 class WorkflowConfig:
@@ -7,6 +8,8 @@ class WorkflowConfig:
         self.transitions = {}
 
     def load(self, configurations):
+        if configurations is None:
+            raise TypeError("configurations must be a dictionary")
         for config in configurations:
             self.config_state(config=config)
             self.config_transition(config=config)
@@ -30,7 +33,15 @@ class WorkflowConfig:
             self.transitions[config["state"].__str__()] = ts
 
     def get_transitions(self, from_state):
-        return self.transitions[from_state.__str__()]
+        try:
+            return self.transitions[from_state.__str__()]
+        except KeyError as e:
+            logging.error(e)
+            raise e
 
     def state_factory(self, state):
-        return self.states[state.__str__()]
+        try:
+            return self.states[state.__str__()]
+        except KeyError as e:
+            logging.error(e)
+            raise e
