@@ -13,7 +13,7 @@ class TapeContext(ActivityContext):
         super().__init__(params)
 
     def idx(self):
-        return self.get_params(["idx"])
+        return self.get_params("idx")
 
     def set_idx(self, index):
         self.set_param_value("idx", index)
