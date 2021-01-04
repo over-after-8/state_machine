@@ -15,6 +15,9 @@ class ActivityContext:
     def set_params(self, params):
         self.params = params
 
+    def set_param_value(self, key, value):
+        self.params[key] = value
+
     def update(self, params):
         self.params.update(params)
 
