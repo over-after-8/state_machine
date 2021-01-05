@@ -1,6 +1,3 @@
-from itertools import chain
-
-
 class DirectedGraph(object):
     def __init__(self):
         self.connected_components = []
@@ -19,6 +16,10 @@ class DirectedGraph(object):
         return self
 
     def dfs(self):
+        return DirectedGraph.dfs_func(self.connected_components)
+
+    @staticmethod
+    def dfs_func(roots):
         visited = {}
         vertices_stack = []
 
@@ -32,6 +33,6 @@ class DirectedGraph(object):
                         vertices_stack.append(ds)
                         dfs_rec()
 
-        vertices_stack += self.connected_components
+        vertices_stack += roots
         vertices_stack.reverse()
         return map(lambda x: x, dfs_rec())

@@ -5,18 +5,6 @@ from directed_graph.vertex import Vertex
 
 
 class TestDirectedGraph(TestCase):
-    def test_add_vertex(self):
-        self.fail()
-
-    def test_remove_vertex(self):
-        self.fail()
-
-    def test_add_edge(self):
-        self.fail()
-
-    def test_remove_edge(self):
-        self.fail()
-
     def test_dfs(self):
         vertex_a = Vertex("A", None)
         vertex_b = Vertex("B", None)
@@ -27,7 +15,4 @@ class TestDirectedGraph(TestCase):
         vertex_c.add_down_stream(vertex_d)
         g = DirectedGraph()
         g.connected_components = [vertex_a, vertex_b]
-        for x in g.dfs():
-            print(x)
-
-
+        self.assertEqual(list(g.dfs()), [vertex_a, vertex_d, vertex_c, vertex_b])
