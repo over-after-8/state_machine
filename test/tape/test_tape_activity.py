@@ -1,5 +1,4 @@
 from unittest import TestCase
-from unittest.mock import patch
 
 from tape.tape_activity import TapeActivity
 from tape.tape_context import TapeContext
@@ -7,11 +6,7 @@ from tape.tape_context import TapeContext
 
 class TestTapeActivity(TestCase):
     def test_execute(self):
-        params = {
-            "idx": 1,
-            "current_value": None,
-            "tape": [None, None, None]
-        }
+        params = {"idx": 1, "current_value": None, "tape": [None, None, None]}
         context = TapeContext(params)
 
         activity = TapeActivity()

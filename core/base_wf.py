@@ -1,6 +1,5 @@
 from core.activity_context import ActivityContext
-from core.constants import INIT, DUMMY
-
+from core.constants import DUMMY, INIT
 from core.state import State
 from core.workflow import Workflow
 from core.workflow_config import WorkflowConfig

@@ -1,5 +1,5 @@
 from unittest import TestCase
-from unittest.mock import patch, PropertyMock
+from unittest.mock import patch
 
 from core.activity_context import ActivityContext
 from core.constants import FINAL
@@ -10,13 +10,19 @@ from core.workflow_config import WorkflowConfig
 
 
 class TestWorkflow(TestCase):
-
     @patch.object(State, "execute")
     @patch.object(WorkflowConfig, "state_factory")
     @patch.object(Transition, "next_state")
     @patch.object(Transition, "is_satisfy")
     @patch.object(WorkflowConfig, "get_transitions")
-    def test_run(self, mock_get_transitions, mock_is_satisfy, mock_next_state, mock_state_factory, mock_execute):
+    def test_run(
+        self,
+        mock_get_transitions,
+        mock_is_satisfy,
+        mock_next_state,
+        mock_state_factory,
+        mock_execute,
+    ):
         wf_config = WorkflowConfig()
         mock_get_transitions.return_value = None
         current_state = State("Init")
@@ -44,4 +50,3 @@ class TestWorkflow(TestCase):
         mock_execute.side_effect = Exception("Exception from state's activity")
         with self.assertRaises(Exception):
             wf.run(context)
-

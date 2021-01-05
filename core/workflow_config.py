@@ -1,5 +1,6 @@
-from core.transition import Transition
 import logging
+
+from core.transition import Transition
 
 
 class WorkflowConfig:
@@ -24,11 +25,16 @@ class WorkflowConfig:
     def config_transition(self, config):
         ts = []
         for transition in config["transitions"]:
-            tr = Transition(from_state=config["state"], next_state=transition["next_state"],
-                            is_satisfy_func=transition["condition"])
+            tr = Transition(
+                from_state=config["state"],
+                next_state=transition["next_state"],
+                is_satisfy_func=transition["condition"],
+            )
             ts.append(tr)
         if config["state"].__str__() in self.transitions:
-            self.transitions[config["state"].__str__()] = self.transitions[config["state"].__str__()] + ts
+            self.transitions[config["state"].__str__()] = (
+                self.transitions[config["state"].__str__()] + ts
+            )
         else:
             self.transitions[config["state"].__str__()] = ts
 

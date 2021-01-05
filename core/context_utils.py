@@ -9,4 +9,5 @@ def cache(func):
         result = func(context)
         context.set_cache(func.__name__, result)
         return result
+
     return wrap_func

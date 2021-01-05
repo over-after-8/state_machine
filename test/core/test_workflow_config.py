@@ -21,23 +21,14 @@ class TestWorkflowConfig(TestCase):
         wfc.load(configurations)
 
     def test_config_state(self):
-        config = {
-            "state": State("A"),
-            "activities": ["A", "B"]
-        }
+        config = {"state": State("A"), "activities": ["A", "B"]}
         wfc = WorkflowConfig()
         wfc.config_state(config)
 
     def test_config_transition(self):
         config = {
             "state": State("A"),
-            "transitions": [
-                {
-                    "next_state": State("B"),
-                    "condition": True
-                }
-            ]
-
+            "transitions": [{"next_state": State("B"), "condition": True}],
         }
         wfc = WorkflowConfig()
         wfc.config_transition(config)

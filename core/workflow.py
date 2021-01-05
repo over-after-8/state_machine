@@ -1,6 +1,7 @@
+import logging
+
 from core.constants import FINAL
 from core.state import State
-import logging
 
 
 class Workflow:

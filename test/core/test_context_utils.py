@@ -19,4 +19,3 @@ class TestContextUtils(TestCase):
 
         mock_get_from_cache.return_value = 1
         self.assertEqual(cache(mock_func)(context), 1)
-
