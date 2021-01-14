@@ -1,0 +1,15 @@
+[
+  {
+    "state": "Q1",
+    "transitions": [
+      {
+        "next_state": "final",
+        "condition": "function.cdt.true"
+      },
+      {
+        "next_state": "init",
+        "condition": "function.cdt"
+      }
+    ]
+  }
+]
