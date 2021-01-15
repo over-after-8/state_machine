@@ -28,3 +28,6 @@ class TapeContext(ActivityContext):
     def current(self):
         index = self.idx()
         return self.get_params("tape")[index]
+
+    def tape_len(self):
+        return len(self.get_params("tape"))

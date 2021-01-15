@@ -33,3 +33,8 @@ class TestTapeContext(TestCase):
         params = {"idx": 1, "current_value": "ABC", "tape": ["ABC", "DEF"]}
         context = TapeContext(params)
         self.assertEqual(context.current(), "DEF")
+
+    def test_tape_len(self):
+        params = {"idx": 1, "current_value": "ABC", "tape": ["ABC", "DEF"]}
+        context = TapeContext(params)
+        self.assertEqual(context.tape_len(), 2)
